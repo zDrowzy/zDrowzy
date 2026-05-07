@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>zDrowzy | Minecraft Developer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#0d1117;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    /* BACKGROUND */
+
+    .bg{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      z-index:-1;
+      background:
+      radial-gradient(circle at top left,#1f6f4a22,transparent 25%),
+      radial-gradient(circle at bottom right,#00ff8822,transparent 25%),
+      #0d1117;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:25px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      backdrop-filter:blur(10px);
+      background:#0d1117aa;
+      border-bottom:1px solid #ffffff10;
+      z-index:1000;
+    }
+
+    nav h1{
+      font-size:1.4rem;
+      color:#42ff9c;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:25px;
+      transition:.2s;
+    }
+
+    nav a:hover{
+      color:#42ff9c;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:0 20px;
+    }
+
+    .hero-content{
+      animation:fadeUp 1s ease;
+    }
+
+    .hero h2{
+      font-size:4rem;
+      font-weight:800;
+      margin-bottom:15px;
+    }
+
+    .hero span{
+      color:#42ff9c;
+    }
+
+    .hero p{
+      color:#b3b3b3;
+      font-size:1.1rem;
+      max-width:700px;
+      margin:auto;
+      line-height:1.7;
+    }
+
+    .buttons{
+      margin-top:35px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:600;
+      margin:10px;
+      transition:.25s;
+    }
+
+    .primary{
+      background:#42ff9c;
+      color:black;
+    }
+
+    .primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 0 20px #42ff9c55;
+    }
+
+    .secondary{
+      border:1px solid #42ff9c;
+      color:#42ff9c;
+    }
+
+    .secondary:hover{
+      background:#42ff9c;
+      color:black;
+    }
+
+    /* SECTION */
+
+    section{
+      padding:110px 10%;
+    }
+
+    .title{
+      font-size:2.5rem;
+      margin-bottom:50px;
+      text-align:center;
+    }
+
+    .title span{
+      color:#42ff9c;
+    }
+
+    /* CARDS */
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#161b22;
+      border:1px solid #ffffff10;
+      padding:30px;
+      border-radius:18px;
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+      border-color:#42ff9c55;
+      box-shadow:0 0 25px #42ff9c15;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      color:#42ff9c;
+    }
+
+    .card p{
+      color:#bdbdbd;
+      line-height:1.6;
+    }
+
+    /* PLUGINS */
+
+    .plugins{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+    }
+
+    .plugin{
+      background:#161b22;
+      border:1px solid #42ff9c30;
+      padding:12px 20px;
+      border-radius:999px;
+      transition:.2s;
+    }
+
+    .plugin:hover{
+      background:#42ff9c;
+      color:black;
+    }
+
+    /* CONTACT */
+
+    .contact{
+      text-align:center;
+    }
+
+    .discord{
+      font-size:1.3rem;
+      margin-top:20px;
+      color:#42ff9c;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#777;
+      border-top:1px solid #ffffff10;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+
+      .hero h2{
+        font-size:2.7rem;
+      }
+
+      nav{
+        padding:20px;
+      }
+
+      nav div{
+        display:none;
+      }
+
+      section{
+        padding:90px 7%;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <nav>
+    <h1>zDrowzy</h1>
+
+    <div>
+      <a href="#services">Servicios</a>
+      <a href="#plugins">Plugins</a>
+      <a href="#contact">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h2>
+        Minecraft Server <span>Developer</span>
+      </h2>
+
+      <p>
+        Más de 4 años de experiencia configurando, optimizando
+        y administrando servidores Minecraft SMP, Economy,
+        Factions y PvP.
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="https://discord.com" target="_blank">
+          Contactarme
+        </a>
+
+        <a class="btn secondary" href="#services">
+          Ver servicios
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <h2 class="title">
+      Mis <span>Servicios</span>
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>⚙ Configuración</h3>
+        <p>
+          Configuración completa de plugins,
+          permisos, menús, scoreboards y sistemas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Optimización</h3>
+        <p>
+          Optimización avanzada para mantener
+          20 TPS estables y reducir lag.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🛡 Administración</h3>
+        <p>
+          Gestión de staff, moderación,
+          sanciones y organización del servidor.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎨 Diseño</h3>
+        <p>
+          Diseño de TAB, scoreboards,
+          chats y estética general del servidor.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PLUGINS -->
+
+  <section id="plugins">
+
+    <h2 class="title">
+      Plugins que <span>manejo</span>
+    </h2>
+
+    <div class="plugins">
+
+      <div class="plugin">EssentialsX</div>
+      <div class="plugin">LuckPerms</div>
+      <div class="plugin">TAB</div>
+      <div class="plugin">PlaceholderAPI</div>
+      <div class="plugin">DeluxeMenus</div>
+      <div class="plugin">ViaVersion</div>
+      <div class="plugin">WorldEdit</div>
+      <div class="plugin">WorldGuard</div>
+      <div class="plugin">AuthMe</div>
+      <div class="plugin">LiteBans</div>
+      <div class="plugin">Vault</div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="contact">
+
+    <h2 class="title">
+      <span>Contacto</span>
+    </h2>
+
+    <p>
+      Disponible para proyectos, servidores y configuraciones.
+    </p>
+
+    <div class="discord">
+      Discord: @zdrowzy_
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 zDrowzy - Minecraft Developer
+  </footer>
+
+</body>
+</html>
